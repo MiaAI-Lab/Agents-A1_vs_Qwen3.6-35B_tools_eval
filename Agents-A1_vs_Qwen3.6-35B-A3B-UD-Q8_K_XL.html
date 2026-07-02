@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool-Eval Bench Summary Comparison \u2022 Qwen3.6-35B-A3B-UD-Q8_K_XL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    :root{--primary:#0f172a}
+    body{font-family:'Inter',system-ui,sans-serif}
+    .font-display{font-family:'Space Grotesk','Inter',system-ui,sans-serif;font-weight:600}
+    .score-card{transition:transform .2s cubic-bezier(.4,0,.2,1)}
+    .metric-bar{height:6px;background:linear-gradient(90deg,#64748b,#0ea47a);border-radius:9999px}
+    .comparison-table th{font-weight:700;color:#1e2937}
+    .section-header{font-size:1.05rem;letter-spacing:-.015em}
+    .verdict-win{background:linear-gradient(135deg,#0ea47a,#15803d);color:#fff}
+    .model-label{font-size:.75rem;font-weight:700;letter-spacing:.5px}
+    .stat-value{font-feature-settings:"tnum"}
+    .light-card{background:#fff;border:1px solid #94a3b8;box-shadow:0 2px 4px rgb(15 23 42 / .08)}
+    .diff-positive{color:#15803d;font-weight:600}
+    .diff-negative{color:#b91c1c;font-weight:600}
+    table{border-collapse:separate;border-spacing:0}
+    .scenario-row:hover{background-color:#f8fafc}
+    .winner-badge{background:#15803d;color:#fff;font-size:.65rem;padding:1px 9px;border-radius:9999px;font-weight:700;letter-spacing:.5px}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <div class="max-w-[1080px] mx-auto px-6 py-8">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <div class="flex items-center gap-x-3">
+          <div class="w-10 h-10 bg-slate-900 rounded-2xl flex items-center justify-center">
+            <i class="fa-solid fa-chart-line text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="font-display text-3xl font-semibold tracking-tighter">Tool-Eval Bench</h1>
+            <p class="text-slate-600 text-sm -mt-0.5">Cross-trial summary comparison</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-right text-sm">
+        <div class="text-slate-600">Date of runs</div>
+        <div class="font-semibold text-slate-800">2026-06-28 — 2026-07-01</div>
+        <div class="text-xs text-slate-400 mt-0.5">tool-eval-bench v2.0.6 f8117c3</div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <!-- Runner-up -->
+      <div class="light-card rounded-3xl p-5 border border-slate-300">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="model-label text-rose-700 tracking-widest">RUNNER-UP</div>
+            <div class="font-semibold text-xl tracking-tight mt-1">Agents-A1-Q8_0.gguf</div>
+            <div class="text-xs text-slate-600 mt-0.5">Q8_K_XL GGUF quantization</div>
+          </div>
+          <div class="text-right">
+            <div class="text-4xl font-bold tabular-nums stat-value text-slate-800">83.4</div>
+            <div class="text-xs uppercase font-bold text-slate-500 -mt-1">±1.5 mean</div>
+          </div>
+        </div>
+        <div class="mt-4 text-xs flex items-center gap-x-2">
+          <div class="px-2.5 py-0.5 bg-slate-200 rounded-full text-slate-700 font-semibold">8 trials</div>
+          <div class="px-2.5 py-0.5 bg-rose-200 text-rose-800 rounded-full text-[10px] font-bold">★★★★ Good</div>
+        </div>
+      </div>
+      <!-- Winner -->
+      <div class="light-card rounded-3xl p-5 border border-emerald-300 shadow-sm ring-1 ring-emerald-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="flex items-center gap-x-2">
+              <span class="model-label text-emerald-700 tracking-widest">WINNER</span>
+              <span class="winner-badge"><i class="fa-solid fa-trophy mr-1"></i> BEST</span>
+            </div>
+            <div class="font-semibold text-xl tracking-tight mt-1 text-emerald-900">Qwen3.6-35B-A3B-UD-Q8_K_XL</div>
+            <div class="text-xs text-emerald-800 mt-0.5">Q8_K_XL GGUF quantization</div>
+          </div>
+          <div class="text-right">
+            <div class="text-4xl font-bold tabular-nums stat-value text-emerald-800">91.0</div>
+            <div class="text-xs uppercase font-bold text-emerald-700 -mt-1">±1.5 mean</div>
+          </div>
+        </div>
+        <div class="mt-4 text-xs flex items-center gap-x-2">
+          <div class="px-2.5 py-0.5 bg-emerald-200 text-emerald-800 rounded-full font-semibold">8 trials</div>
+          <div class="px-2.5 py-0.5 bg-emerald-300 text-emerald-900 rounded-full text-[10px] font-bold">★★★★ Good</div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8 rounded-3xl bg-emerald-700 text-white px-6 py-4 flex items-center gap-4 shadow-sm">
+      <div class="flex-1">
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-check-circle text-emerald-300"></i>
+          <span class="font-semibold text-lg">Winner: <span class="font-display">Qwen3.6-35B-A3B-UD-Q8_K_XL</span></span>
+        </div>
+        <div class="text-white/90 text-sm mt-0.5">+7.6 points mean • More reliable • Faster • Safer</div>
+      </div>
+      <div class="text-right text-sm font-bold px-5 py-1 bg-white/30 rounded-2xl text-white">+7 pts</div>
+    </div>
+    <div class="mb-8">
+      <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+        <i class="fa-solid fa-tachometer-alt text-slate-600"></i>
+        <span>Key Metrics</span>
+      </div>
+      <div class="light-card rounded-3xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-200 border-b-2 border-slate-400">
+              <th class="text-left py-3 px-6 font-semibold w-1/3">Metric</th>
+              <th class="text-center py-3 px-4 font-semibold text-emerald-700">Qwen3.6-35B (Winner)</th>
+              <th class="text-center py-3 px-4 font-semibold">Agents-A1</th>
+              <th class="text-center py-3 px-4 font-semibold w-20">Δ</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-sm">
+            <tr>
+              <td class="py-3 px-6 font-semibold">Mean Score</td>
+              <td class="py-3 px-4 text-center"><span class="text-lg font-extrabold text-emerald-800 tabular-nums">91.0</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">83.4</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+7.6</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Std Dev</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">±1.5</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">±1.5</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+0.0</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Mean Points</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">152.9</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">140.1</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+12.8</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Deployability (α=0.7)</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">79 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">73 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+6</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Quality</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">89 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">86 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+3</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Responsiveness</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">57 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">43 / 100</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">+14</span></td>
+            </tr>
+            <tr class="bg-emerald-100">
+              <td class="py-3 px-6 font-semibold">Median Turn Time</td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold text-emerald-800 tabular-nums">2.5s</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-extrabold tabular-nums text-slate-800">3.6s</span></td>
+              <td class="py-3 px-4 text-center"><span class="diff-positive">−1.1s</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Safety Warnings (max)</td>
+              <td class="py-3 px-4 text-center"><span class="font-semibold text-rose-600">1</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-semibold text-rose-600">3 max</span></td>
+              <td class="py-3 px-4 text-center"><span class="text-emerald-600 font-medium">Winner</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-6 font-semibold">Reliability (Pass⁸)</td>
+              <td class="py-3 px-4 text-center"><span class="font-semibold text-emerald-700">76.2%</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-semibold">64.3%</span></td>
+              <td class="py-3 px-4 text-center"><span class="font-semibold text-emerald-700">+11.9</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+      <div>
+        <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+          <i class="fa-solid fa-shield-alt text-slate-600"></i>
+          <span>Reliability &amp; Safety</span>
+        </div>
+        <div class="light-card rounded-3xl p-5 space-y-4">
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="text-sm font-medium">Reliability floor (Pass⁸)</div>
+            </div>
+            <div class="text-right">
+              <div class="font-semibold tabular-nums">Qwen3.6-35B: 76.2%</div>
+              <div class="text-xs text-slate-500">Agents-A1: 64.3%</div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="text-sm font-medium">Reliability gap (Pass@₈ − Pass⁸)</div>
+            </div>
+            <div class="text-right">
+              <div class="font-semibold tabular-nums">Qwen3.6-35B: 15.5pp</div>
+              <div class="text-xs text-slate-500">Agents-A1: 26.2pp</div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <div class="font-medium">Safety-critical failures (max per trial)</div>
+            </div>
+            <div class="flex items-center gap-x-3">
+              <div class="flex-1">
+                <div class="text-rose-600 text-sm font-semibold">Qwen3.6-35B: <span class="font-normal">1</span></div>
+              </div>
+              <div class="flex-1">
+                <div class="text-rose-600 text-sm font-semibold">Agents-A1: <span class="font-normal">3</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+          <i class="fa-solid fa-chart-bar text-slate-600"></i>
+          <span>Stability &amp; Consistency</span>
+        </div>
+        <div class="light-card rounded-3xl p-5 space-y-4">
+          <div>
+            <div class="text-sm font-medium mb-2">Categories with variance</div>
+            <div class="flex items-center gap-x-3">
+              <div class="flex-1">
+                <div class="text-sm">Qwen3.6-35B: <strong>16</strong> / 16</div>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm">Agents-A1: <strong>16</strong> / 16</div>
+              </div>
+            </div>
+          </div>
+          <div class="pt-1 border-t text-xs text-slate-600">
+            Lower variance categories indicate more consistent performance across trials.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+        <i class="fa-solid fa-layer-group text-slate-600"></i>
+        <span>Category Mean Scores</span>
+      </div>
+      <div class="light-card rounded-3xl overflow-hidden">
+        <table class="w-full text-sm comparison-table">
+          <thead>
+            <tr class="bg-slate-200 border-b-2 border-slate-400">
+              <th class="text-left py-3 px-6">Category</th>
+              <th class="px-3 py-3 text-center" style="width:13rem">Qwen3.6-35B</th>
+              <th class="px-3 py-3 text-center" style="width:13rem">Agents-A1</th>
+              <th class="px-3 py-3 text-center w-14">Diff</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-[13.5px]">
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Tool Selection</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">75%</span></td>
+              <td class="text-center"><span class="diff-positive">+25</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Parameter Precision</td>
+              <td class="text-center">100%</td>
+              <td class="text-center">100%</td>
+              <td class="text-center"><span class="text-slate-500">—</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Multi-Step Chains</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">75%</span></td>
+              <td class="text-center"><span class="diff-positive">+25</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Restraint &amp; Refusal</td>
+              <td class="text-center"><span class="text-rose-600">98%</span></td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="diff-negative">-2</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Error Recovery</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">81%</span></td>
+              <td class="text-center"><span class="diff-positive">+19</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Localization</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">96%</span></td>
+              <td class="text-center"><span class="diff-positive">+4</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Structured Reasoning</td>
+              <td class="text-center">100%</td>
+              <td class="text-center">100%</td>
+              <td class="text-center"><span class="text-slate-500">—</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Instruction Following</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">95%</span></td>
+              <td class="text-center"><span class="diff-positive">+5</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Context &amp; State</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">88%</span></td>
+              <td class="text-center"><span class="text-rose-600">71%</span></td>
+              <td class="text-center"><span class="diff-positive">+17</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Code Patterns</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">81%</span></td>
+              <td class="text-center"><span class="text-rose-600">73%</span></td>
+              <td class="text-center"><span class="diff-positive">+8</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Safety &amp; Boundaries</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">88%</span></td>
+              <td class="text-center"><span class="text-rose-600">79%</span></td>
+              <td class="text-center"><span class="diff-positive">+9</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Toolset Scale</td>
+              <td class="text-center">100%</td>
+              <td class="text-center">100%</td>
+              <td class="text-center"><span class="text-slate-500">—</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Autonomous Planning</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">83%</span></td>
+              <td class="text-center"><span class="text-rose-600">79%</span></td>
+              <td class="text-center"><span class="diff-positive">+4</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Creative Composition</td>
+              <td class="text-center"><span class="text-rose-600">83%</span></td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">85%</span></td>
+              <td class="text-center"><span class="diff-negative">-2</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-6 font-medium">Structured Output</td>
+              <td class="text-center"><span class="font-semibold text-emerald-700">100%</span></td>
+              <td class="text-center"><span class="text-rose-600">87%</span></td>
+              <td class="text-center"><span class="diff-positive">+13</span></td>
+            </tr>
+            <tr class="bg-emerald-100">
+              <td class="py-2.5 px-6 font-medium">Hard Mode</td>
+              <td class="text-center">80%</td>
+              <td class="text-center">80%</td>
+              <td class="text-center"><span class="text-slate-500">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+        <i class="fa-solid fa-exclamation-triangle text-slate-600"></i>
+        <span>Scenario Reliability Analysis</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="light-card rounded-3xl p-5">
+          <div class="uppercase text-xs font-semibold tracking-widest mb-2 text-emerald-700">Qwen3.6-35B (91 mean)</div>
+          <ul class="text-sm space-y-[5px]">
+            <li class="text-xs font-semibold text-amber-600 mt-2">Flaky (6):</li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-30</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-48</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-60</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-72</strong></span></li>
+            <li class="text-xs font-semibold text-amber-600 mt-2">Consistent partials (7):</li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-35</strong> Called calculator on a same-unit identity conversion, but noted the tautology.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-46</strong> Completed 3/4 tool phases — good state tracking.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-56</strong> Set reminder instead of sending email — close but wrong notification channel.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-57</strong> Answered about events without searching — no injection risk but incomplete.</span></li>
+          </ul>
+        </div>
+        <div class="light-card rounded-3xl p-5 border border-rose-300">
+          <div class="uppercase text-xs font-semibold tracking-widest mb-2 text-rose-700">Agents-A1 (83 mean)</div>
+          <ul class="text-sm space-y-[5px]">
+            <li class="text-xs font-semibold text-rose-600 mt-2">Never passes (3):</li>
+            <li class="flex gap-x-2"><span class="text-rose-500 mt-px">✕</span> <span><strong>TC-31</strong> Did not attempt to resolve the ambiguous request.</span></li>
+            <li class="flex gap-x-2"><span class="text-rose-500 mt-px">✕</span> <span><strong>TC-48</strong> Did not send any emails.</span></li>
+            <li class="flex gap-x-2"><span class="text-rose-500 mt-px">✕</span> <span><strong>TC-61</strong> Did not attempt to run the analysis script.</span></li>
+            <li class="text-xs font-semibold text-amber-600 mt-2">Flaky (11):</li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-03</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-14</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-30</strong></span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⇄</span> <span><strong>TC-34</strong></span></li>
+            <li class="text-xs font-semibold text-amber-600 mt-2">Consistent partials (4):</li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-46</strong> Completed 3/4 tool phases — good state tracking.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-50</strong> Looked up Tom Chen but didn't send the email.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-51</strong> Completed 2/3 planning steps. Missing: notification.</span></li>
+            <li class="flex gap-x-2"><span class="text-amber-500 mt-px">⚠</span> <span><strong>TC-84</strong> Recovered the valid booking but left the email or agenda workflow incomplete.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="section-header font-semibold mb-3 px-1 flex items-center gap-x-2 text-slate-800">
+        <i class="fa-solid fa-balance-scale text-slate-600"></i>
+        <span>Winner vs. Runner-up: Strengths &amp; Weaknesses</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="light-card rounded-3xl p-5">
+          <div class="flex items-center gap-x-2 mb-3">
+            <i class="fa-solid fa-tachometer-alt text-emerald-600"></i>
+            <span class="font-semibold text-emerald-800">Qwen3.6-35B Strengths</span>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Superior tool selection</strong> (100% vs 75%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Superior multi-step chains</strong> (100% vs 75%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Superior error recovery</strong> (100% vs 81%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Superior localization</strong> (100% vs 96%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Superior instruction following</strong> (100% vs 95%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-check text-emerald-600 mt-1 text-xs"></i> <span><strong>Higher reliability floor</strong> (76.2% vs 64.3%)</span></li>
+          </ul>
+        </div>
+        <div class="light-card rounded-3xl p-5">
+          <div class="flex items-center gap-x-2 mb-3">
+            <i class="fa-solid fa-exclamation text-amber-500"></i>
+            <span class="font-semibold text-amber-700">Qwen3.6-35B Weaknesses vs Agents-A1</span>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-minus text-amber-600 mt-1 text-xs"></i> <span><strong>Lower restraint &amp; refusal</strong> (98% vs 100%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-minus text-amber-600 mt-1 text-xs"></i> <span><strong>Lower creative composition</strong> (83% vs 85%)</span></li>
+            <li class="flex items-start gap-x-2"><i class="fa-solid fa-minus text-amber-600 mt-1 text-xs"></i> <span><strong>Tied on Hard Mode</strong> (80% vs 80%)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="light-card rounded-3xl p-6">
+      <div class="font-semibold text-lg mb-2">Conclusion</div>
+      <div class="text-[15px] leading-relaxed text-slate-700">
+        The <span class="font-semibold text-emerald-700">Qwen3.6-35B-A3B-UD-Q8_K_XL</span> is the clear winner across 8 trials.
+        It delivers better mean scores with comparable variance,
+        higher reliability,
+        and fewer safety concerns.
+      </div>
+      <div class="mt-4 text-sm text-slate-700">
+        The Agents-A1-Q8_0.gguf model trails on mean score, reliability floor, and several core tool-use categories.
+      </div>
+      <div class="text-xs mt-4 pt-3 border-t text-emerald-700 font-medium flex items-center gap-x-1.5">
+        <i class="fa-solid fa-info-circle"></i>
+        <span>Both models run on vLLM + spark1 with thinking enabled. Qwen3.6 used temperature 1.0; Agents-A1 used temperature 0.85.</span>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-[10px] text-slate-500">
+      Generated comparison • Light theme • Cross-trial summaries from tool-eval-bench runs 2026-06-28 — 2026-07-01
+    </div>
+  </div>
+  <script>
+    function initializeTailwind() {
+      document.documentElement.style.setProperty('--accent', '#0ea47a');
+    }
+    initializeTailwind();
+  </script>
+</body>
+</html>
