@@ -1,0 +1,17 @@
+{
+  "name": "Tool-Eval Bench Report",
+  "install": "python3 --version",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 8000 --bind 0.0.0.0 --directory .",
+      "description": "Serves the static tool-eval-bench comparison report (open the HTML file) on port 8000."
+    }
+  ],
+  "ports": [
+    {
+      "name": "static-server",
+      "port": 8000
+    }
+  ]
+}
